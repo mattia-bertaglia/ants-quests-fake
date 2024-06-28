@@ -1,5 +1,10 @@
 package com.gol.javahome.hibernate.entities;
+import java.sql.Date;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,9 +20,11 @@ import lombok.NoArgsConstructor;
 public class Ordine extends GenericEntity{
 
 
-    private int id_ordine; 
-    private int data_ordine;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id_ordine; 
+    private  Date ordine;
     private int quantita;
     private int totale;
-    private int utente_id;
+    private Integer utente_id;
 }
