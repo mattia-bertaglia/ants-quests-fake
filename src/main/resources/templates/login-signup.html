@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/SignUp</title>
+</head>
+<body>
+    <div class="login-wrap">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Accedi</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registrati</label>
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group">
+                        <label for="user" class="label">Username</label>
+                        <input id="user" type="text" class="input">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Password</label>
+                        <input id="pass" type="password" class="input" data-type="password">
+                        <!-- da creare per bene -->
+                        <button id="btn-eye-pass-login" class="eye">eye</button>
+                    </div>
+                    <div class="group">
+                        <input type="submit" class="button" value="Sign In">
+                    </div>
+                    <div class="hr"></div>
+                    <!-- aggiungere link -->
+                    <div class="foot-lnk">
+                        <a href="#forgot">Password dimenticata?</a>
+                    </div>
+                </div>
+                <div class="sign-up-htm">
+                    <div class="group">
+                        <label for="user" class="label">Username</label>
+                        <input id="user" type="text" class="input">
+                    </div>
+                    <div class="group">
+                        <label for="pass-signin" class="label">Password</label>
+                        <input id="pass-signin" type="password" class="input" data-type="password">
+                        <!-- da creare per bene -->
+                        <button class="eye-btn-pass-signup">eye</button>
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Conferma Password</label>
+                        <input id="checkpass" type="password" class="input" data-type="password">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Indirizzo Email</label>
+                        <input id="pass" type="text" class="input">
+                    </div>
+                    <div class="group">
+                        <input type="submit" class="button" value="Sign Up">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <label for="tab-1">Sei già registrato?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="jquery/jquery-3.7.1.js"></script>
+    <script>
+(function() {
+
+// Get references to necessary elements
+const tabInputs = document.querySelectorAll('input[type="radio"][name="tab"]');
+const signInTheForm = document.querySelector('.sign-in-htm');
+const signUpTheForm = document.querySelector('.sign-up-htm');
+const eyeButtons = document.querySelectorAll('.eye');
+const passwordInputs = document.querySelectorAll('input[data-type="password"]');
+const checkPassInput = document.getElementById('checkpass');
+const emailInput = document.getElementById('email');
+const submitSignUpBtn = document.querySelector('.sign-up .button');
+
+// Toggle sign-in/sign-up forms based on radio button selection
+tabInputs.forEach(tabInput => {
+  tabInput.addEventListener('change', function() {
+    if (this.id === 'tab-1') {
+      signInTheForm.classList.remove('hidden');
+      signUpTheForm.classList.add('hidden');
+    } else {
+      signInTheForm.classList.add('hidden');
+      signUpTheForm.classList.remove('hidden');
+    }
+  });
+});
+
+// Toggle password visibility for both forms
+eyeButtons.forEach(eyeButton => {
+  eyeButton.addEventListener('click', function() {
+    const associatedInput = this.parentElement.previousElementSibling.querySelector('input[type="password"]');
+    if (associatedInput.type === 'password') {
+      associatedInput.type = 'text';
+      this.classList.add('eye-show'); // Add a visual cue when password is visible
+    } else {
+      associatedInput.type = 'password';
+      this.classList.remove('eye-show');
+    }
+  });
+});
+
+// Validate password confirmation on sign-up
+submitSignUpBtn.addEventListener('click', function(event) {
+  const passwordInput = document.getElementById('pass-signin');
+  if (passwordInput.value !== checkPassInput.value) {
+    event.preventDefault(); // Prevent form submission if passwords don't match
+    alert('Le password non corrispondono.');
+    checkPassInput.value = ''; // Clear confirm password field for re-entry
+  }
+});
+
+// Basic email validation (add server-side validation for security)
+emailInput.addEventListener('blur', function() {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(this.value)) {
+    alert('Indirizzo email non valido.');
+  }
+});
+
+})();
+
+// Call the function to ensure it runs after the DOM is loaded
+window.onload = function() {
+// If you have any code that needs to run after the DOM is loaded, put it here
+};
+
+
+    </script>
+</body>
+</html>
