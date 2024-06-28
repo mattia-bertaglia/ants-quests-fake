@@ -22,9 +22,9 @@ public class Ordine extends GenericEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_ordine; 
+    private Integer idOrdine; 
     private  Date ordine;
     private int quantita;
     private int totale;
-    private Integer utente_id;
+    private Integer utenteId;
 }
