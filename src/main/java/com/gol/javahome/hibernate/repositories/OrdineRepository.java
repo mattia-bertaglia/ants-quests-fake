@@ -8,12 +8,12 @@ import com.gol.javahome.hibernate.entities.Ordine;
 
 
 
+
 @Repository
 public interface OrdineRepository extends JpaRepository<Ordine, Integer> {
 
 
-
-    List<Ordine> findByNome (String nome);
+    List<Ordine> findByQuantita(int quantita);
   
 
 
