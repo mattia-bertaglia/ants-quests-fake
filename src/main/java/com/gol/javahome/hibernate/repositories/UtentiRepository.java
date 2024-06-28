@@ -11,7 +11,7 @@ public interface UtentiRepository extends JpaRepository<Utente,Integer> {
 
     List<Utente> findByNomeAndCognome(String nome, String cognome);
 
-    List<Utente> findByEmail(String email);
+    List<Utente> findByMail(String email);
 
     Utente findByNomeAndCognomeAndDataNascita(String nome, String cognome, Date dataNascita);
     

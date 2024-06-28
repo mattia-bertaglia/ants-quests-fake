@@ -18,7 +18,7 @@ public class UtentiHibService extends GenericHibService<Utente, Integer, UtentiR
     }
 
     List<Utente> findByMail(String mail) {
-        return getRepository().findByEmail(mail);
+        return getRepository().findByMail(mail);
     }
 
     Utente findByNomeAndCognomeAndDataNascita(String nome, String cognome, Date dataNascita) {
