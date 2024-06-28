@@ -1,4 +1,4 @@
-package com.gol.hibernato.hibernate.entities;
+package com.gol.javahome.hibernate.entities;
 
 public abstract class GenericEntity {
 
