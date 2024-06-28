@@ -24,4 +24,8 @@ public class ProdottiHibService extends GenericHibService<Prodotto, Integer, Pro
         return getRepository().findByColore(colore);
     }
 
+    List<Prodotto> findByQuantita(int quantita){
+        return getRepository().findByQuantita(quantita);
+    }
+
 }

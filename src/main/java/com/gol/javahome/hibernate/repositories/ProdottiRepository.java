@@ -12,5 +12,6 @@ public interface ProdottiRepository extends JpaRepository<Prodotto, Integer>{
     List<Prodotto> findByNome(String nome);
     List<Prodotto> findByCategoria(String categoria);
     List<Prodotto> findByColore(String colore);
+    List<Prodotto> findByQuantita(int quantita);
 
 }
