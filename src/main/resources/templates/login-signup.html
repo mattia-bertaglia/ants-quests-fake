@@ -35,6 +35,18 @@
         </div>
         <div class="sign-up-htm">
           <div class="group">
+            <label for="name" class="label">Name</label>
+            <input id="name" type="text" class="input">
+          </div>
+          <div class="group">
+            <label for="surname" class="label">Surname</label>
+            <input id="surname" type="text" class="input">
+          </div>
+          <div class="group">
+            <label for="birth-date" class="label">Date of Birth</label>
+            <input id="birth-date" type="date" class="input">
+          </div>
+          <div class="group">
             <label for="user" class="label">Username</label>
             <input id="user" type="text" class="input">
           </div>
@@ -57,7 +69,7 @@
             <input id="pass" type="text" class="input">
           </div>
           <div class="group">
-            <input type="submit" class="button" value="Sign Up">
+            <input type="submit" id="signin-button" class="button" value="Sign Up">
           </div>
           <div class="hr"></div>
           <div class="foot-lnk">
@@ -69,7 +81,6 @@
   </div>
 
   <script>
-    // Function to toggle password visibility
     function togglePasswordVisibility(passwordInput, show) {
       passwordInput.type = show ? 'text' : 'password';
     }
@@ -80,17 +91,108 @@
     showHidePassSigninBtn.addEventListener('mouseover', () => togglePasswordVisibility(signinPassInput, true));
     showHidePassSigninBtn.addEventListener('mouseout', () => togglePasswordVisibility(signinPassInput, false));
 
-    // Event listeners for Sign Up password
-    const signupPassInput = document.getElementById('signup-pass');
-    const showHidePassSignupBtn = document.getElementById('show-hide-pass-signup');
-    showHidePassSignupBtn.addEventListener('mouseover', () => togglePasswordVisibility(signupPassInput, true));
-    showHidePassSignupBtn.addEventListener('mouseout', () => togglePasswordVisibility(signupPassInput, false));
+    // Validate form function
+    function validateForm(event) {
+      event.preventDefault(); // Prevent form submission by default
+      
+      const username = document.getElementById('signup-user');
+      const password = document.getElementById('signup-pass');
+      const confirmPassword = document.getElementById('signup-checkpass');
+      const email = document.getElementById('email');
+      const errorMsg = [];
 
-    // Event listeners for Sign Up check password
-    const signupCheckPassInput = document.getElementById('signup-checkpass');
-    const showHideCheckPassSignupBtn = document.getElementById('show-hide-checkpass-signup');
-    showHideCheckPassSignupBtn.addEventListener('mouseover', () => togglePasswordVisibility(signupCheckPassInput, true));
-    showHideCheckPassSignupBtn.addEventListener('mouseout', () => togglePasswordVisibility(signupCheckPassInput, false));
+      // Validate username
+      if (username.value.trim() === '') {
+        setErrorFor(username, 'Username cannot be blank');
+      } else {
+        setSuccessFor(username);
+      }
+
+      // Validate password
+      if (password.value.trim() === '') {
+        setErrorFor(password, 'Password cannot be blank');
+      } else if (password.value.length < 5) {
+        setErrorFor(password, 'Password must be at least 5 characters long');
+      } else if (!/[A-Z]/.test(password.value)) {
+        setErrorFor(password, 'Password must contain at least one uppercase letter');
+      } else if (!/[a-z]/.test(password.value)) {
+        setErrorFor(password, 'Password must contain at least one lowercase letter');
+      } else if (!/\d/.test(password.value)) {
+        setErrorFor(password, 'Password must contain at least one number');
+      } else {
+        setSuccessFor(password);
+      }
+
+      // Validate confirm password
+      if (confirmPassword.value.trim() === '') {
+        setErrorFor(confirmPassword, 'Confirm password cannot be blank');
+      } else if (password.value !== confirmPassword.value) {
+        setErrorFor(confirmPassword, 'Passwords do not match');
+      } else {
+        setSuccessFor(confirmPassword);
+      }
+
+      // Validate email
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      if (email.value.trim() === '') {
+        setErrorFor(email, 'Email cannot be blank');
+      } else if (!emailPattern.test(email.value)) {
+        setErrorFor(email, 'Email is not valid');
+      } else {
+        setSuccessFor(email);
+      }
+
+      // Display error or success message
+      if (errorMsg.length > 0) {
+        alert('Registration failed. Please check:\n' + errorMsg.join('\n'));
+      } else {
+        alert('Registration successful!\nUsername: ' + username.value + '\nEmail: ' + email.value);
+        // Add further action here, like submitting the form
+        document.getElementById('signup-form').submit(); // Submit the form
+      }
+    }
+
+    function setErrorFor(input, message) {
+      const formGroup = input.parentElement; // .group
+      const small = formGroup.querySelector('small');
+
+      // Add error message
+      small.innerText = message;
+
+      // Add error class
+      formGroup.className = 'group error';
+    }
+
+    function setSuccessFor(input) {
+      const formGroup = input.parentElement; // .group
+      const small = formGroup.querySelector('small');
+
+      // Remove error message
+      small.innerText = '';
+
+      // Remove error class
+      formGroup.className = 'group success';
+    }
+
+    // Event listener for Sign In button
+    const signinButton = document.getElementById('signin-button');
+    signinButton.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const username = document.getElementById('user');
+      const password = document.getElementById('signin-pass');
+
+      // Check if fields are filled correctly
+      if (username.value.trim() === '' || password.value.trim() === '') {
+        alert('Please fill out all fields.');
+      } else {
+        // Simulate successful sign-in
+        alert('Sign in successful!\nUsername: ' + username.value);
+        // Further actions can be added here, like sending data to backend
+        // Here we can submit the form or redirect the user
+        // Example: document.getElementById('signin-form').submit();
+      }
+    });
   </script>
 </body>
 </html>
