@@ -49,8 +49,9 @@ public class AppController {
                         0,
                         params.get("nome"),
                         params.get("cognome"),
-                        Date.valueOf(params.get("nascita")),
-                        params.containsKey("tesserato")));
+                        params.get("email"),
+                        params.get("password"),
+                        Date.valueOf(params.get("nascita"))));
 
         return "redirect:/";
 
