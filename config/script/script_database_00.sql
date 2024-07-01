@@ -61,26 +61,27 @@ INSERT INTO utenti (nome, cognome, username, password, ruolo, mail, indirizzo, d
 ('Anna', 'Ferraro', 'aferraro', 'ferrariRace0)', 'user', 'anna.ferraro@example.com', 'Via Prato 20, Rimini', '1994-08-25');
 
 INSERT INTO prodotti (nome, categoria, prezzo, quantita, colore) VALUES 
-('Laptop X1', 'Electronics', 999.99, 50, 'Black'),
-('Smartphone A20', 'Electronics', 499.99, 100, 'Blue'),
-('Headphones H100', 'Accessories', 79.99, 200, 'Red'),
-('Smartwatch S5', 'Wearables', 199.99, 150, 'Black'),
-('Gaming Console G7', 'Gaming', 299.99, 75, 'White'),
-('Tablet T10', 'Electronics', 299.99, 120, 'Silver'),
-('Camera C300', 'Photography', 599.99, 60, 'Black'),
-('Bluetooth Speaker B1', 'Audio', 49.99, 250, 'Blue'),
-('External Hard Drive E2', 'Storage', 89.99, 300, 'Black'),
-('Monitor M24', 'Computers', 199.99, 80, 'Black'),
-('Keyboard K100', 'Computers', 49.99, 400, 'White'),
-('Mouse M200', 'Computers', 29.99, 500, 'Black'),
-('Printer P3', 'Office', 149.99, 90, 'White'),
-('Office Chair O1', 'Furniture', 129.99, 70, 'Gray'),
-('Desk Lamp D2', 'Home', 39.99, 150, 'White'),
-('Fitness Tracker F1', 'Wearables', 99.99, 110, 'Black'),
-('Backpack B50', 'Accessories', 59.99, 200, 'Blue'),
-('Coffee Maker C5', 'Appliances', 89.99, 85, 'Black'),
-('Blender B3', 'Appliances', 69.99, 95, 'Red'),
-('Air Purifier A1', 'Home', 129.99, 100, 'White');
+('Cassettiera con 3 cassetti', 'Cassettiere', 979.99, 120, 'Black'),
+('Sedia da gaming', 'Sedie', 278.0, 50, 'Black'),
+('Cassettiera bassa','Cassettiere', 119.20, 120, 'White'),
+('Cassettiera per scarpe','Cassettiere', 79.99, 40, 'Brown'),
+('Sedia tonda', 'Sedie', 120.57, 145, 'Blue'),
+('Cassettiera alta', 'Cassettiere', 220.50, 75, 'Brown'),
+('Sedia da ufficio', 'Sedie', 219.90, 50, 'Grey'),
+('Sedia da giardino', 'Sedie', 119.99, 20, 'Green'),
+('Divano rettangolare', 'Divani', 546.99, 20, 'Blue'),
+('Divano 2 posti', 'Divani', 399.99, 180, 'Brown'),
+('Divano 3 posti', 'Divani', 699.99, 40, 'White'),
+('Divano letto', 'Divani', 856.89, 45, 'Brown'),
+('Scaffale alto', 'Scaffali', 549.89, 100, 'White'),
+('Scaffale in legno', 'Scaffali', 220.00, 75, 'Brown'),
+('Scaffale da bagno', 'Scaffali', 450.00, 65, 'White'),
+('Scaffale da parete', 'Scaffali', 75.99, 50, 'White'),
+('Libreria in legno', 'Librerie', 989.99, 179, 'Brown'),
+('Libreria alta', 'Librerie', 450.00, 110, 'White'),
+('Libreria bassa', 'Librerie', 129.99, 90, 'White'),
+('Libreria in metallo', 'Librerie', 75.99, 145, 'Grey');
+
 
 INSERT INTO ordini (data_ordine, quantita, totale, utente_id) VALUES 
 ('2023-01-15', 2, 1999.98, 1),
