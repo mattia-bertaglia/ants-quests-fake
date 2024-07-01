@@ -33,8 +33,7 @@ public class Prodotto extends GenericEntity {
     private int quantita;
     private String colore;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "ord_prod",joinColumns = @JoinColumn(name="ordine_id"),inverseJoinColumns = @JoinColumn(name="prodotto_id"))
+    @ManyToMany(mappedBy = "prodotti")
     private List<Ordine> ordini;
 
 }

@@ -3,9 +3,11 @@ package com.gol.javahome.hibernate.services;
 import java.sql.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.gol.javahome.hibernate.entities.Utente;
 import com.gol.javahome.hibernate.repositories.UtentiRepository;
-
+@Service
 public class UtentiHibService extends GenericHibService<Utente, Integer, UtentiRepository>{
 
     public UtentiHibService(UtentiRepository repository) {

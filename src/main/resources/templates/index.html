@@ -6,7 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    ciao
-    
+   <table>
+    <tr th:each="ut : ${utente.ordini}" >
+        
+        <td th:text="${ut.dataOrdine}"></td>
+        <td th:text="${ut.quantita}"></td>
+        <td th:text="${ut.totale}"></td>
+   </table>
+   
 </body>
 </html>

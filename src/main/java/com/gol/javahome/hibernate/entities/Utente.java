@@ -39,8 +39,7 @@ public class Utente extends GenericEntity {
     private String indirizzo;  
     private Date dataNascita; 
     
-   @OneToMany(fetch = FetchType.EAGER)
-   @JoinColumn(name= "ordini")
+   @OneToMany(mappedBy = "utente")
    private List<Ordine> ordini;
 
 
