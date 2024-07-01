@@ -1,0 +1,17 @@
+
+Feature:
+- JH-LOGIN
+    +AuthController(/apriLogin, /login, /signup, /logout)
+    +AuthService
+    UtentiHibService(OK?)
+
+- JH-PRODOTTI-ADMIN
+    +AdminController
+    +AdminService
+    ProdottiHibService
+
+- JH-CLIENTI
+    +CarrelloController
+    +CarrelloService
+    +UtenteController
+    +UtenteService(listaDesideri, ordini, modificaProfilo, Pagamento, ecc)

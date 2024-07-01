@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="login.css">
 </head>
+
 <body>
-  
+
   <div class="container">
     <div class="login-html">
       <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
@@ -33,6 +35,7 @@
             <a href="#forgot">Forgot Password?</a>
           </div>
         </div>
+        <hr>
         <div class="sign-up-htm">
           <div class="group">
             <label for="name" class="label">Name</label>
@@ -94,7 +97,7 @@
     // Validate form function
     function validateForm(event) {
       event.preventDefault(); // Prevent form submission by default
-      
+
       const username = document.getElementById('signup-user');
       const password = document.getElementById('signup-pass');
       const confirmPassword = document.getElementById('signup-checkpass');
@@ -176,7 +179,7 @@
 
     // Event listener for Sign In button
     const signinButton = document.getElementById('signin-button');
-    signinButton.addEventListener('click', function(event) {
+    signinButton.addEventListener('click', function (event) {
       event.preventDefault(); // Prevent default form submission
 
       const username = document.getElementById('user');
@@ -195,4 +198,5 @@
     });
   </script>
 </body>
+
 </html>

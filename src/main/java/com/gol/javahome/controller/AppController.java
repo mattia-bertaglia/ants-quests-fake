@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.gol.javahome.hibernate.services.ProdottiHibService;
+import com.gol.javahome.service.ProdottiService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -12,12 +12,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AppController {
 
-    private final ProdottiHibService prodHibSrv;
+    private final ProdottiService prodSrv;
 
     // prodotti divisi per ambiente casa
     @GetMapping("/prodotti")
     public String prodotti(Model model) {
-        model.addAttribute("listaProdotti", prodHibSrv.findAll());
+        prodSrv.tuttiProdotti(model);
         return "prodotti.html";
     }
 
@@ -28,7 +28,8 @@ public class AppController {
     }
 
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+        prodSrv.findProdSpecial(model);
         return "index.html";
     }
 
