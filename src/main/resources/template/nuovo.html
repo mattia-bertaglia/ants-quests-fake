@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuovo</title>
+    <br><br>
+    <ul>
+        <li><a href="/" class="active">Home</a></li>
+        <li><a href="/findAllProdotti">Catalogo</a></li>
+    </ul>
+</head>
+
+<body>
+
+    <hr>
+
+    <h4>Aggiungi Prodotto</h4>
+    <!-- <p> paragrafo -->
+    <form action="/new_prodotto">
+        <input type="text" name="nome" placeholder="Inserisci nome prodotto">
+        <input type="text" name="tipo" placeholder="Inserisci tipo prodotto">
+        <input type="number" name="prezzo" placeholder="Inserisci prezzo prodotto">
+        <input type="text" name="quantita" placeholder="Inserisci quantità prodotto">
+        <br>
+        <!--ALTRO METODO BOTTONE <input type="submit" value="Inserisci"> -->
+        <button>Inserisci</button>
+        <br>
+        <input type="reset" value="Pulisci">
+    </form>
+
+    <hr>
+    <h4>Nuovo Cliente</h4>
+
+    <form action="/new_cliente">
+        <input type="text" name="nome" placeholder="Inserisci nome Cliente">
+        <input type="text" name="cognome" placeholder="Inserisci cognome Cliente">
+        <input type="text" name="email" placeholder="Inserisci email Cliente">
+        <input type="text" name="password" placeholder="Inserisci password Cliente">
+        <input type="text" name="indirizzo" placeholder="Inserisci indirizzo Cliente">
+
+        <label for="nascita">data di nascita</label>
+        <input type="date" id="nascita" name="nascita">
+
+
+
+        <!--ALTRO METODO BOTTONE <input type="submit" value="Inserisci"> -->
+
+        <button class="rosso">Inserisci</button>
+        <input class="rosso" type="reset" value="Pulisci">
+    </form>
+    <hr>
+    <br>
+    <h4>Lista Clienti</h4>
+
+    <div>
+
+        <ul th:each="cli : ${listaClienti}">
+            <li th:text="${cli.toString}"></li>
+        </ul>
+    </div>
+</body>
+
+</html>
