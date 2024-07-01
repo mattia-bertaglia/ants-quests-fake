@@ -21,22 +21,9 @@ CREATE TABLE `utenti`(
     `indirizzo` VARCHAR(255) NULL,
     `data_nascita` DATE NULL
 );
-CREATE TABLE `ordini`(
-    `id_ordine` INT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `data_ordine` DATE NULL,
-    `quantita` INT NULL,
-    `totale` DECIMAL(8, 2) NULL,
-    `utente_id` INT NULL,
-     FOREIGN KEY(`utente_id`) REFERENCES `utenti`(`id_utente`)
-);
 
-CREATE TABLE `ord_prod`(
 
-    `ordine_id` INT NOT NULL ,
-    `prodotto_id` INT NOT NULL,
-    FOREIGN KEY(`prodotto_id`) REFERENCES `prodotti`(`id_prodotto`),
-    FOREIGN KEY(`ordine_id`) REFERENCES `ordini`(`id_ordine`)
-);
+
 
 INSERT INTO utenti (nome, cognome, username, password, ruolo, mail, indirizzo, data_nascita) VALUES 
 ('Mario', 'Rossi', 'mrossi', 'passw0rd1!', 'admin', 'mario.rossi@example.com', 'Via Roma 1, Milano', '1980-01-15'),
@@ -82,51 +69,5 @@ INSERT INTO prodotti (nome, categoria, prezzo, quantita, colore) VALUES
 ('Blender B3', 'Appliances', 69.99, 95, 'Red'),
 ('Air Purifier A1', 'Home', 129.99, 100, 'White');
 
-INSERT INTO ordini (data_ordine, quantita, totale, utente_id) VALUES 
-('2023-01-15', 2, 1999.98, 1),
-('2023-01-20', 1, 499.99, 2),
-('2023-02-05', 3, 239.97, 3),
-('2023-02-10', 1, 199.99, 4),
-('2023-02-15', 2, 599.98, 5),
-('2023-02-20', 4, 1199.96, 1), 
-('2023-03-05', 1, 599.99, 6),
-('2023-03-10', 5, 249.95, 2), 
-('2023-03-15', 2, 179.98, 7),
-('2023-03-20', 3, 599.97, 8),
-('2023-04-05', 2, 299.98, 3), 
-('2023-04-10', 4, 599.96, 9),
-('2023-04-15', 1, 149.99, 4), 
-('2023-04-20', 2, 259.98, 10),
-('2023-05-05', 3, 89.97, 11),
-('2023-05-10', 1, 99.99, 5), 
-('2023-05-15', 5, 649.95, 12),
-('2023-05-20', 2, 179.98, 6), 
-('2023-06-05', 3, 389.97, 13),
-('2023-06-10', 1, 129.99, 14);
 
-INSERT INTO ord_prod (ordine_id, prodotto_id) VALUES 
-(1, 5),
-(1, 12),
-(2, 3),
-(2, 8),
-(3, 7),
-(4, 1),
-(5, 6),
-(6, 2),
-(6, 9),
-(7, 4),
-(8, 10),
-(9, 11),
-(9, 14),
-(10, 13),
-(11, 15),
-(12, 16),
-(13, 17),
-(14, 18),
-(15, 19),
-(16, 20),
-(17, 1),
-(18, 2),
-(18, 3),
-(19, 4),
-(20, 5);
+
