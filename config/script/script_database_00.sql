@@ -38,7 +38,7 @@ CREATE TABLE `ord_prod`(
     FOREIGN KEY(`ordine_id`) REFERENCES `ordini`(`id_ordine`)
 );
 
-INSERT INTO users (nome, cognome, username, password, ruolo, mail, indirizzo, data_nascita) VALUES 
+INSERT INTO utenti (nome, cognome, username, password, ruolo, mail, indirizzo, data_nascita) VALUES 
 ('Mario', 'Rossi', 'mrossi', 'passw0rd1!', 'admin', 'mario.rossi@example.com', 'Via Roma 1, Milano', '1980-01-15'),
 ('Luigi', 'Verdi', 'lverdi', 'greenLeaf2$', 'user', 'luigi.verdi@example.com', 'Via Milano 2, Roma', '1985-02-20'),
 ('Giulia', 'Bianchi', 'gbianchi', 'whiteStar3%', 'editor', 'giulia.bianchi@example.com', 'Via Firenze 3, Napoli', '1990-03-25'),
