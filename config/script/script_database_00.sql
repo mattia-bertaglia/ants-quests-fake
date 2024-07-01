@@ -21,6 +21,22 @@ CREATE TABLE `utenti`(
     `indirizzo` VARCHAR(255) NULL,
     `data_nascita` DATE NULL
 );
+CREATE TABLE `ordini`(
+    `id_ordine` INT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `data_ordine` DATE NULL,
+    `quantita` INT NULL,
+    `totale` DECIMAL(8, 2) NULL,
+    `utente_id` INT NULL,
+     FOREIGN KEY(`utente_id`) REFERENCES `utenti`(`id_utente`)
+);
+
+CREATE TABLE `ord_prod`(
+
+    `ordine_id` INT NOT NULL ,
+    `prodotto_id` INT NOT NULL,
+    FOREIGN KEY(`prodotto_id`) REFERENCES `prodotti`(`id_prodotto`),
+    FOREIGN KEY(`ordine_id`) REFERENCES `ordini`(`id_ordine`)
+);
 
 INSERT INTO utenti (nome, cognome, username, password, ruolo, mail, indirizzo, data_nascita) VALUES 
 ('Mario', 'Rossi', 'mrossi', 'passw0rd1!', 'admin', 'mario.rossi@example.com', 'Via Roma 1, Milano', '1980-01-15'),
@@ -45,25 +61,72 @@ INSERT INTO utenti (nome, cognome, username, password, ruolo, mail, indirizzo, d
 ('Anna', 'Ferraro', 'aferraro', 'ferrariRace0)', 'user', 'anna.ferraro@example.com', 'Via Prato 20, Rimini', '1994-08-25');
 
 INSERT INTO prodotti (nome, categoria, prezzo, quantita, colore) VALUES 
-('Cassettiera con 3 cassetti', 'Cassettiere', 979.99, 120, 'Black'),
-('Sedia da gaming', 'Sedie', 278.0, 50, 'Black'),
-('Cassettiera bassa','Cassettiere', 119.20, 120, 'White'),
-('Cassettiera per scarpe','Cassettiere', 79.99, 40, 'Brown'),
-('Sedia tonda', 'Sedie', 120.57, 145, 'Blue'),
-('Cassettiera alta', 'Cassettiere', 220.50, 75, 'Brown'),
-('Sedia da ufficio', 'Sedie', 219.90, 50, 'Grey'),
-('Sedia da giardino', 'Sedie', 119.99, 20, 'Green'),
-('Divano rettangolare', 'Divani', 546.99, 20, 'Blue'),
-('Divano 2 posti', 'Divani', 399.99, 180, 'Brown'),
-('Divano 3 posti', 'Divani', 699.99, 40, 'White'),
-('Divano letto', 'Divani', 856.89, 45, 'Brown'),
-('Scaffale alto', 'Scaffali', 549.89, 100, 'White'),
-('Scaffale in legno', 'Scaffali', 220.00, 75, 'Brown'),
-('Scaffale da bagno', 'Scaffali', 450.00, 65, 'White'),
-('Scaffale da parete', 'Scaffali', 75.99, 50, 'White'),
-('Libreria in legno', 'Librerie', 989.99, 179, 'Brown'),
-('Libreria alta', 'Librerie', 450.00, 110, 'White'),
-('Libreria bassa', 'Librerie', 129.99, 90, 'White'),
-('Libreria in metallo', 'Librerie', 75.99, 145, 'Grey');
+('Laptop X1', 'Electronics', 999.99, 50, 'Black'),
+('Smartphone A20', 'Electronics', 499.99, 100, 'Blue'),
+('Headphones H100', 'Accessories', 79.99, 200, 'Red'),
+('Smartwatch S5', 'Wearables', 199.99, 150, 'Black'),
+('Gaming Console G7', 'Gaming', 299.99, 75, 'White'),
+('Tablet T10', 'Electronics', 299.99, 120, 'Silver'),
+('Camera C300', 'Photography', 599.99, 60, 'Black'),
+('Bluetooth Speaker B1', 'Audio', 49.99, 250, 'Blue'),
+('External Hard Drive E2', 'Storage', 89.99, 300, 'Black'),
+('Monitor M24', 'Computers', 199.99, 80, 'Black'),
+('Keyboard K100', 'Computers', 49.99, 400, 'White'),
+('Mouse M200', 'Computers', 29.99, 500, 'Black'),
+('Printer P3', 'Office', 149.99, 90, 'White'),
+('Office Chair O1', 'Furniture', 129.99, 70, 'Gray'),
+('Desk Lamp D2', 'Home', 39.99, 150, 'White'),
+('Fitness Tracker F1', 'Wearables', 99.99, 110, 'Black'),
+('Backpack B50', 'Accessories', 59.99, 200, 'Blue'),
+('Coffee Maker C5', 'Appliances', 89.99, 85, 'Black'),
+('Blender B3', 'Appliances', 69.99, 95, 'Red'),
+('Air Purifier A1', 'Home', 129.99, 100, 'White');
 
+INSERT INTO ordini (data_ordine, quantita, totale, utente_id) VALUES 
+('2023-01-15', 2, 1999.98, 1),
+('2023-01-20', 1, 499.99, 2),
+('2023-02-05', 3, 239.97, 3),
+('2023-02-10', 1, 199.99, 4),
+('2023-02-15', 2, 599.98, 5),
+('2023-02-20', 4, 1199.96, 1), 
+('2023-03-05', 1, 599.99, 6),
+('2023-03-10', 5, 249.95, 2), 
+('2023-03-15', 2, 179.98, 7),
+('2023-03-20', 3, 599.97, 8),
+('2023-04-05', 2, 299.98, 3), 
+('2023-04-10', 4, 599.96, 9),
+('2023-04-15', 1, 149.99, 4), 
+('2023-04-20', 2, 259.98, 10),
+('2023-05-05', 3, 89.97, 11),
+('2023-05-10', 1, 99.99, 5), 
+('2023-05-15', 5, 649.95, 12),
+('2023-05-20', 2, 179.98, 6), 
+('2023-06-05', 3, 389.97, 13),
+('2023-06-10', 1, 129.99, 14);
 
+INSERT INTO ord_prod (ordine_id, prodotto_id) VALUES 
+(1, 5),
+(1, 12),
+(2, 3),
+(2, 8),
+(3, 7),
+(4, 1),
+(5, 6),
+(6, 2),
+(6, 9),
+(7, 4),
+(8, 10),
+(9, 11),
+(9, 14),
+(10, 13),
+(11, 15),
+(12, 16),
+(13, 17),
+(14, 18),
+(15, 19),
+(16, 20),
+(17, 1),
+(18, 2),
+(18, 3),
+(19, 4),
+(20, 5);
